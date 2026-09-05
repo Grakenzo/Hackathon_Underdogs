@@ -1,13 +1,14 @@
-// Categories shown on the Start screen.
+// Categories shown on the Start screen, ported from
+// pathfinder-prototype-v4.html's CATEGORIES constant.
 // Only "technology" is wired up to the quiz right now. The rest are
 // placeholders so the screen shows the full shape of the product -
-// they're rendered greyed out with a "coming soon" label and are not
+// they're rendered greyed out with a "Soon" label and are not
 // clickable (see CategoryCard.jsx).
 export const categories = [
   { id: 'technology', name: 'Technology', enabled: true },
-  { id: 'business-admin', name: 'Business and admin', enabled: false },
-  { id: 'health-community', name: 'Health and community', enabled: false },
-  { id: 'creative-media', name: 'Creative and media', enabled: false },
-  { id: 'hospitality-retail', name: 'Hospitality and retail', enabled: false },
-  { id: 'trades-construction', name: 'Trades and construction', enabled: false },
+  { id: 'business', name: 'Business', enabled: false },
+  { id: 'health', name: 'Health', enabled: false },
+  { id: 'creative', name: 'Creative', enabled: false },
+  { id: 'hospitality', name: 'Hospitality', enabled: false },
+  { id: 'trades', name: 'Trades', enabled: false },
 ];

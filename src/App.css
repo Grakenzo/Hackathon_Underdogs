@@ -1,43 +1,30 @@
 /* ---------------------------------------------------------------------
    Pathfinder - plain CSS, mobile-first, no UI library.
-   Rebuilt against DESIGN.md. Two moods, one system:
-     - Start / Quiz / Suggestions = the hook. Playful, warm, tactile cards.
-     - Role detail = the reference document. Calm, flat, generous space.
-   Sections below follow the four screens in order.
+   Visual design ported from pathfinder-prototype-v4.html - that file is
+   the single design reference. Tokens, card treatment, button styles,
+   and motion all mirror it; class names here follow this codebase's own
+   per-component convention rather than the prototype's terse ids.
    --------------------------------------------------------------------- */
 
 :root {
-  /* ---- warm neutral palette + exactly one accent ---- */
-  --color-bg: #f7f3ee;
-  --color-surface: #ffffff;
-  --color-sunken: #ede6db; /* neutral fill: disabled bg, neutral badges */
-  --color-border: #ddd2bf;
-  --color-divider: #e6ddd0;
+  --blue: #2563eb;
+  --blue-d: #1d4ed8;
+  --tint: #eff6ff;
+  --tint2: #dbeafe;
+  --page: #f8fafc;
+  --card: #fff;
+  --ink: #0f172a;
+  --ink2: #475569;
+  --ink3: #94a3b8;
+  --line: #e2e8f0;
 
-  --color-text: #23201b; /* primary: large/bold/dark - never all three at once */
-  --color-text-secondary: #6f6656; /* secondary + tertiary body copy (5.6:1 on white) */
-  --color-text-faint: #9c8f7c; /* disabled/inert only - not for readable body text */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 16px;
+  --r-xl: 22px;
 
-  --color-accent: #b5541f; /* single accent: deep warm terracotta, ~71% sat */
-  --color-accent-dark: #8d4218;
-  --color-accent-soft: #f6e4d6;
-
-  /* ---- spacing scale - use only these values ---- */
-  --space-1: 4px; /* tight coupling */
-  --space-2: 8px; /* related elements */
-  --space-3: 16px; /* standard gap */
-  --space-4: 24px; /* section internal */
-  --space-5: 48px; /* between sections */
-  --space-6: 64px; /* major breaks */
-
-  --radius-playful: 14px; /* quiz mood: rounded, tactile */
-  --radius-sober: 6px; /* role detail: flat, minimal */
-
-  --dur-fast: 150ms;
-  --dur-base: 220ms;
-  --dur-slow: 280ms;
-
-  --max-width: 480px;
+  --dur: 0.2s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -51,19 +38,17 @@ body {
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 16px;
+  background: var(--page);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
   line-height: 1.6;
+  padding: 28px 16px;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  line-height: 1.2;
   margin: 0;
 }
 
@@ -71,189 +56,234 @@ p {
   margin: 0;
 }
 
+/* The whole app lives inside one card, like the prototype - a fixed,
+   contained "screen" that each of the four views is swapped into. */
 .app {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
+  max-width: 660px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 36px 32px;
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
 }
 
 .screen {
-  width: 100%;
-  max-width: var(--max-width);
-  padding: var(--space-4) var(--space-3) var(--space-6);
   display: flex;
   flex-direction: column;
 }
 
-/* Visible keyboard focus ring everywhere, on top of the warm palette. */
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  border-radius: 4px;
+@media (max-width: 480px) {
+  .app {
+    padding: 24px 18px;
+  }
 }
 
-@keyframes fade-in {
+/* ---------- motion ---------- */
+
+@keyframes rise {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: none;
   }
 }
 
-@keyframes option-enter {
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) translateY(20px);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.15) translateY(-8px);
+  }
+  70% {
+    transform: scale(0.95) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes float-out {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-90px) scale(1.1);
+  }
+}
+
+@keyframes fade-up {
   from {
     opacity: 0;
     transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
-/* ---------- shared bits ---------- */
-
-.btn {
-  font: inherit;
-  cursor: pointer;
-  border-radius: 999px;
-  border: none;
-  min-height: 44px;
+.in {
+  animation: rise 0.35s var(--ease) both;
 }
 
-.btn--primary {
-  background: var(--color-accent);
-  color: #fff;
-  padding: var(--space-3) var(--space-4);
-  font-size: 1.0625rem;
-  font-weight: 600;
-  transition: background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
-.btn--primary:hover {
-  background: var(--color-accent-dark);
-}
+/* ---------- buttons ---------- */
 
-.btn--primary:active {
-  transform: scale(0.98);
-}
-
-.btn--text {
-  background: none;
-  color: var(--color-text-secondary);
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-2) var(--space-1);
-  border-radius: 6px;
-}
-
-/* Used on the quiz's Back button only - a spot of the playful mood's accent. */
-.btn--text-accent {
-  color: var(--color-accent);
-}
-
-.notice {
-  background: var(--color-accent-soft);
-  border-radius: var(--radius-playful);
-  padding: var(--space-3);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.6;
-  margin-bottom: var(--space-4);
-  max-width: 65ch;
-}
-
-/* ---------- Screen 1: Start (playful) ---------- */
-
-.start-screen__heading {
-  font-size: 2.25rem;
-  margin: var(--space-2) 0 var(--space-1);
-}
-
-.start-screen__subheading {
-  color: var(--color-text-secondary);
-  margin: 0 0 var(--space-5);
-  max-width: 65ch;
-}
-
-.start-screen__cta {
+.cta {
+  min-height: 56px;
   width: 100%;
-  margin-bottom: var(--space-5);
-}
-
-.start-screen__or {
-  text-align: center;
-  color: var(--color-text-secondary);
-  font-size: 0.9375rem;
-  margin: 0 0 var(--space-3);
-}
-
-.category-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-}
-
-.category-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 44px;
-  padding: var(--space-3);
-  border-radius: var(--radius-playful);
-  border: 1px solid var(--color-border);
-  font: inherit;
-  text-align: left;
-}
-
-.category-card--enabled {
-  background: var(--color-surface);
+  padding: 0 28px;
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-md);
+  font: 600 17px inherit;
   cursor: pointer;
-  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+  transition: transform var(--dur), background var(--dur);
+  margin-bottom: 32px;
 }
 
-.category-card--enabled:hover {
-  border-color: var(--color-accent);
+.cta:hover {
+  background: var(--blue-d);
 }
 
-.category-card--enabled:active {
+.cta:active {
   transform: scale(0.98);
 }
 
-/* Genuinely inert: reduced contrast, no hover state, default cursor. */
-.category-card--disabled {
-  background: var(--color-sunken);
-  border-color: var(--color-sunken);
-  color: var(--color-text-faint);
+.back {
+  background: none;
+  border: none;
+  font: 600 14px inherit;
+  color: var(--ink3);
+  cursor: pointer;
+  padding: 4px 0;
+  margin-bottom: 16px;
+  align-self: flex-start;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.cta:focus-visible,
+.opt:focus-visible,
+.job:focus-visible,
+.cat:focus-visible,
+.back:focus-visible,
+.tab:focus-visible,
+.acch:focus-visible,
+.box:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.4);
+  outline-offset: 2px;
+}
+
+/* ---------- Screen 1: Start ---------- */
+
+.hero {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.lede {
+  font-size: 17px;
+  color: var(--ink2);
+  margin-bottom: 28px;
+  max-width: 44ch;
+}
+
+.cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 560px) {
+  .cats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cat {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 20px 14px;
+  text-align: center;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform var(--dur), border-color var(--dur), background var(--dur);
+}
+
+.cat.on:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
+
+.cat.on {
+  border-color: var(--line);
+}
+
+.cat.off {
+  opacity: 0.45;
   cursor: default;
 }
 
-.category-card__name {
+.cat .nm {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  margin-top: 10px;
+}
+
+.cat .st {
+  font-size: 12px;
+  color: var(--ink3);
+  display: block;
+  margin-top: 3px;
+}
+
+.cat.on .st {
+  color: var(--blue);
   font-weight: 600;
 }
 
-.category-card--disabled .category-card__name {
-  font-weight: 600;
-  color: var(--color-text-faint);
-}
-
-.category-card__badge {
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-text-faint);
-}
-
-/* ---------- Screen 2: Quiz (playful) ---------- */
+/* ---------- Screen 2: Quiz ---------- */
 
 .quiz-screen__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-2);
-  min-height: 44px;
+  margin-bottom: 8px;
+}
+
+.quiz-screen__back {
+  margin-bottom: 0;
 }
 
 .quiz-screen__back-spacer {
@@ -262,382 +292,428 @@ p {
 }
 
 .quiz-screen__progress-label {
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
+  font-size: 13px;
   font-weight: 600;
+  color: var(--ink3);
+  white-space: nowrap;
 }
 
 .progress-bar {
-  background: var(--color-sunken);
-  border-radius: 999px;
   height: 6px;
+  background: var(--line);
+  border-radius: 6px;
   overflow: hidden;
-  margin-bottom: var(--space-4);
+  margin-bottom: 30px;
 }
 
 .progress-bar__fill {
-  width: 100%;
   height: 100%;
-  background: var(--color-accent);
-  transform-origin: left center;
-  transform: scaleX(0);
-  transition: transform var(--dur-slow) ease;
+  background: var(--blue);
+  border-radius: 6px;
+  transition: width 0.4s var(--ease);
 }
 
 .quiz-screen__question {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  margin: 0 0 var(--space-4);
-  max-width: 65ch;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 26px;
+  max-width: 22ch;
 }
 
 .quiz-screen__options {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
 }
 
 .option-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   width: 100%;
-  text-align: left;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-playful);
-  padding: var(--space-3);
-  font: inherit;
-  font-size: 1rem;
-  line-height: 1.6;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  border-radius: var(--r-md);
+  padding: 18px 20px;
+  min-height: 68px;
+  margin-bottom: 12px;
   cursor: pointer;
-  color: var(--color-text);
-  min-height: 44px;
-  animation: option-enter var(--dur-base) ease-out both;
-  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease,
-    transform var(--dur-fast) ease;
+  font-family: inherit;
+  text-align: left;
+  color: var(--ink);
+  animation: rise 0.35s var(--ease) both;
+  transition: transform var(--dur), border-color var(--dur), background var(--dur);
 }
 
 .option-card:hover {
-  border-color: var(--color-accent);
+  border-color: var(--ink3);
+  transform: translateX(3px);
 }
 
 .option-card:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
 .option-card--selected {
-  border-color: var(--color-accent);
-  background: var(--color-accent-soft);
+  background: var(--tint);
+  border-color: var(--blue);
 }
 
-/* ---------- Screen 3: Suggestions (playful) ---------- */
-
-.suggestions-screen__heading {
-  font-size: 1.5rem;
-  margin: 0 0 var(--space-3);
-}
-
-.suggestions-screen__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.role-card {
-  text-align: left;
-  border-radius: var(--radius-playful);
-  border: 1px solid var(--color-border);
-  padding: var(--space-4);
-  font: inherit;
-}
-
-.role-card--enabled {
-  background: var(--color-surface);
-  cursor: pointer;
-  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
-}
-
-.role-card--enabled:hover {
-  border-color: var(--color-accent);
-}
-
-.role-card--enabled:active {
-  transform: scale(0.98);
-}
-
-.role-card--disabled {
-  background: var(--color-sunken);
-  border-color: var(--color-sunken);
+.option-card:disabled {
   cursor: default;
 }
 
-.role-card__name {
-  font-size: 1.125rem;
-  margin: 0 0 var(--space-2);
-}
-
-.role-card--disabled .role-card__name {
-  color: var(--color-text-faint);
-}
-
-.role-card__reasoning {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 65ch;
-}
-
-.role-card--disabled .role-card__reasoning {
-  color: var(--color-text-faint);
-}
-
-/* The "coming soon" state is composed, not apologetic: it names what IS
-   available rather than just marking this card as unavailable. */
-.role-card__status {
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border);
-}
-
-.role-card__status-label {
-  display: block;
-  font-weight: 600;
-  color: var(--color-text-faint);
-  font-size: 0.9375rem;
-}
-
-.role-card__status-hint {
-  display: block;
-  color: var(--color-text-faint);
-  font-size: 0.9375rem;
-  margin-top: var(--space-1);
-}
-
-/* ---------- Screen 4: Role detail (sober) ---------- */
-/* No card containers, no shadows, no stagger - this screen appears at once
-   and reads like a reference document: flat lists, dividers, generous air. */
-
-.role-detail-screen__back {
-  margin-bottom: var(--space-3);
-}
-
-.role-detail-screen__header {
-  margin-bottom: var(--space-4);
-}
-
-.role-detail-screen__name {
-  font-size: 1.75rem;
-  margin: 0 0 var(--space-2);
-}
-
-.role-detail-screen__subtitle {
-  margin: 0;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.role-detail-screen__collected {
-  margin: var(--space-1) 0 0;
-  color: var(--color-text-secondary);
-  max-width: 65ch;
-}
-
-.callout {
-  background: var(--color-sunken);
-  border-left: 4px solid var(--color-accent);
-  border-radius: 0 var(--radius-sober) var(--radius-sober) 0;
-  padding: var(--space-3) var(--space-4);
-  font-weight: 600;
-  font-size: 1.125rem;
-  line-height: 1.6;
-  margin: 0 0 var(--space-5);
-  max-width: 65ch;
-}
-
-.role-detail-section {
-  margin-bottom: var(--space-5);
-}
-
-.role-detail-section__title {
-  font-size: 1.25rem;
-  margin: 0 0 var(--space-4);
-}
-
-/* -- terms: a divided list, not a stack of boxes -- */
-
-.term-list {
-  border-top: 1px solid var(--color-divider);
-}
-
-.term-item {
-  border-bottom: 1px solid var(--color-divider);
-}
-
-.term-item__toggle {
-  width: 100%;
-  min-height: 44px;
-  background: none;
-  border: none;
-  padding: var(--space-3) 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  font: inherit;
-  font-size: 1rem;
-  text-align: left;
-  cursor: pointer;
-  color: var(--color-text);
-  transition: color var(--dur-fast) ease;
-}
-
-.term-item__toggle:hover {
-  color: var(--color-accent-dark);
-}
-
-.term-item__chevron {
-  flex-shrink: 0;
-  color: var(--color-accent);
-  font-size: 1.25rem;
+.option-card__emoji {
+  font-size: 28px;
   line-height: 1;
 }
 
-.term-item__plain {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 65ch;
-  margin: 0 0 var(--space-4);
-  animation: fade-in var(--dur-base) ease;
+.option-card__text {
+  font-size: 17px;
+  flex: 1;
 }
 
-/* -- must have / nice to have -- */
+/* ---------- reaction overlay ---------- */
 
-.requirement-columns {
+.reaction {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.94);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.reaction__glyph {
+  font-size: 72px;
+  line-height: 1;
+  animation: pop 0.5s var(--ease) both;
+}
+
+.reaction__line {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 18px;
+  max-width: 26ch;
+  text-align: center;
+  animation: fade-up 0.35s var(--ease) 0.18s both;
+}
+
+.reaction__spark {
+  position: absolute;
+  font-size: 22px;
+  animation: float-out 1.1s ease-out both;
+  pointer-events: none;
+}
+
+/* ---------- Screen 3: Suggestions ---------- */
+
+.info {
+  text-align: center;
+  padding-bottom: 22px;
+}
+
+.info h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.info p {
+  font-size: 15px;
+  color: var(--ink2);
+  max-width: 44ch;
+  margin: 0 auto;
+}
+
+.rule {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 26px;
+}
+
+.three {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-5);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-.requirement-list__title {
-  font-size: 1rem;
+@media (max-width: 620px) {
+  .three {
+    grid-template-columns: 1fr;
+  }
+}
+
+.job {
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: 24px 18px;
+  text-align: center;
+  font-family: inherit;
+  cursor: pointer;
+  animation: rise 0.35s var(--ease) both;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur), border-color var(--dur);
+}
+
+.job:hover:not(.off) {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  border-color: var(--blue);
+}
+
+.job:active:not(.off) {
+  transform: translateY(-1px);
+}
+
+.job.lead {
+  border-color: var(--blue);
+  background: var(--tint);
+}
+
+.job__name {
+  font-size: 18px;
   font-weight: 600;
-  margin: 0 0 var(--space-3);
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
-.requirement-list__items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--color-divider);
+.job__why {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.5;
 }
 
-.requirement-item {
-  border-bottom: 1px solid var(--color-divider);
-  padding: var(--space-3) 0;
+.job__why b {
+  font-weight: 600;
+  color: var(--ink);
 }
 
-.requirement-item__top {
+.job__go {
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.job__soon {
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.job.off {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.foot {
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink3);
+  margin-top: 22px;
+}
+
+/* ---------- Screen 4: Role detail ---------- */
+
+.rhead {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.rhead h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.rhead .src {
+  font-size: 13px;
+  color: var(--ink3);
+  margin-top: 6px;
+}
+
+.stat {
+  background: var(--tint);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.stat .big {
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--blue);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat .cap {
+  font-size: 15px;
+  color: var(--ink2);
+  margin-top: 10px;
+  max-width: 34ch;
+  margin-inline: auto;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--page);
+  padding: 6px;
+  border-radius: var(--r-md);
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 12px 6px;
+  border: none;
+  background: none;
+  border-radius: var(--r-sm);
+  font: 600 14px inherit;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: background var(--dur), color var(--dur);
+}
+
+.tab.on {
+  background: var(--card);
+  color: var(--blue);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+@media (max-width: 560px) {
+  .two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.colh {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+.item {
+  margin-bottom: 18px;
+}
+
+.item .top {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: var(--space-2) var(--space-3);
+  gap: 6px 12px;
 }
 
-/* Requirement text is primary: dark, semibold. The badge and note below
-   are secondary/tertiary - they support the text, they don't compete. */
-.requirement-item__text {
-  font-weight: 600;
-  color: var(--color-text);
+.item .nm {
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.requirement-item__badge {
-  flex-shrink: 0;
-  font-size: 0.875rem;
+.cnt {
+  font-size: 12px;
   font-weight: 600;
-  color: var(--color-text-secondary);
-  background: var(--color-sunken);
-  border-radius: 999px;
-  padding: 2px var(--space-2);
+  padding: 3px 10px;
+  border-radius: 20px;
   white-space: nowrap;
+  background: var(--tint2);
+  color: var(--blue-d);
 }
 
-/* Must-have items get the one accent colour, as the more load-bearing
-   column; nice-to-have stays neutral. That's the whole differentiation -
-   no red/green, just how much of the single accent is used. */
-.requirement-list:first-child .requirement-item__badge {
-  color: var(--color-accent-dark);
-  background: var(--color-accent-soft);
+.cnt.g {
+  background: var(--page);
+  color: var(--ink3);
 }
 
-.requirement-item__note {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 65ch;
-  margin: var(--space-1) 0 0;
+.item .nt {
+  font-size: 13px;
+  color: var(--ink3);
+  margin-top: 3px;
 }
 
-/* -- get ready: same divided-list treatment as must-have/nice-to-have -- */
-
-.get-ready-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--color-divider);
+.acc {
+  border-bottom: 1px solid var(--line);
 }
 
-.get-ready-item {
-  border-bottom: 1px solid var(--color-divider);
-  padding: var(--space-3) 0;
-}
-
-.get-ready-item__top {
+.acch {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
-  gap: var(--space-2) var(--space-3);
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 16px 0;
+  font: 600 16px inherit;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
 }
 
-.get-ready-item__text {
-  font-weight: 600;
-  color: var(--color-text);
+.acch .cv {
+  color: var(--ink3);
+  transition: transform 0.25s;
 }
 
-.get-ready-item__badge {
+.acc.open .cv {
+  transform: rotate(180deg);
+}
+
+.accb {
+  font-size: 15px;
+  color: var(--ink2);
+  padding: 0 0 16px;
+  max-width: 62ch;
+  animation: fade-up 0.2s var(--ease);
+}
+
+.chk {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.box {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--ink3);
+  border-radius: 5px;
   flex-shrink: 0;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  background: var(--color-sunken);
-  border-radius: 999px;
-  padding: 2px var(--space-2);
-  white-space: nowrap;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: background var(--dur), border-color var(--dur);
 }
 
-.get-ready-item__why {
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 65ch;
-  margin: var(--space-1) 0 0;
+.box.tick {
+  background: var(--blue);
+  border-color: var(--blue);
 }
 
-/* ---------------------------------------------------------------------
-   Desktop: widen the canvas and switch must-have/nice-to-have to two
-   columns side by side.
-   --------------------------------------------------------------------- */
-@media (min-width: 700px) {
-  .screen {
-    max-width: 760px;
-    padding: var(--space-6) var(--space-4) var(--space-6);
-  }
-
-  .requirement-columns {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* Respect reduced-motion: no entrance animation, instant state changes. */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001ms !important;
-    transition-duration: 0.001ms !important;
-  }
+.note {
+  font-size: 13px;
+  color: var(--ink3);
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
 }

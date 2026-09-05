@@ -1,23 +1,21 @@
 import { categories } from '../data/categories.js';
 import CategoryCard from './CategoryCard.jsx';
 
-// Screen 1. Heading, one big "I don't know what to do" button, and six
-// category cards underneath - only Technology actually goes anywhere.
+// Screen 1. Heading, one big CTA button, and six category cards
+// underneath - only Technology actually goes anywhere.
 export default function StartScreen({ onStartQuiz }) {
   return (
     <div className="screen start-screen">
-      <h1 className="start-screen__heading">Pathfinder</h1>
-      <p className="start-screen__subheading">
-        Not sure what job to aim for? Let's narrow it down.
+      <h1 className="hero">Not sure what you're aiming for?</h1>
+      <p className="lede">
+        Six quick questions. Then we'll show you what Brisbane employers actually ask for.
       </p>
 
-      <button className="btn btn--primary start-screen__cta" onClick={onStartQuiz}>
-        I don't know what to do
+      <button className="cta" onClick={onStartQuiz}>
+        Let's find out
       </button>
 
-      <p className="start-screen__or">or pick an area you're curious about</p>
-
-      <div className="category-grid">
+      <div className="cats">
         {categories.map((category) => (
           <CategoryCard
             key={category.id}
