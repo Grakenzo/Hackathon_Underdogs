@@ -1,0 +1,366 @@
+{
+  "role": "IT support",
+  "location": "Brisbane",
+  "adCount": 10,
+  "collected": "Real job ads collected manually from Seek, September 2026",
+  "headline": "Not one of these 10 ads required a completed IT qualification.",
+  "ads": [
+    {
+      "id": "01",
+      "title": "IT Support Specialist",
+      "company": "GenTech Seeds",
+      "type": "Full time",
+      "pay": "$70,000 - $80,000"
+    },
+    {
+      "id": "02",
+      "title": "Technical Support/Admin IT Helpdesk",
+      "company": "Clubfit Software",
+      "type": "Full time",
+      "pay": "$80,000 - $100,000"
+    },
+    {
+      "id": "03",
+      "title": "Junior IT Support Officer (Level 1)",
+      "company": "Defy IT",
+      "type": "Part time",
+      "pay": "$27 - $30 per hour"
+    },
+    {
+      "id": "04",
+      "title": "Support Technician",
+      "company": "First Focus IT",
+      "type": "Full time",
+      "pay": "Up to $90k package"
+    },
+    {
+      "id": "05",
+      "title": "Level 1/2 Service Desk Engineer",
+      "company": "NetVault",
+      "type": "Full time",
+      "pay": "Commensurate with experience"
+    },
+    {
+      "id": "06",
+      "title": "Service Desk Engineer",
+      "company": "Deployus",
+      "type": "Full time",
+      "pay": "$75,000 - $90,000"
+    },
+    {
+      "id": "07",
+      "title": "Internal IT Support",
+      "company": "3 Logix",
+      "type": "Full time",
+      "pay": "$70,000 - $80,000"
+    },
+    {
+      "id": "08",
+      "title": "IT Support Specialist",
+      "company": "Fitness & Lifestyle Group",
+      "type": "Full time",
+      "pay": "Competitive + benefits"
+    },
+    {
+      "id": "09",
+      "title": "Junior Systems Administrator",
+      "company": "DataMC",
+      "type": "Full time",
+      "pay": "Undisclosed"
+    },
+    {
+      "id": "10",
+      "title": "ICT Officer - Application Support",
+      "company": "Indie Education",
+      "type": "Full time",
+      "pay": "$80,364 + super + packaging"
+    }
+  ],
+  "terms": [
+    {
+      "term": "Entra ID",
+      "plain": "Microsoft's system for managing who can log in to what. Used to be called Azure Active Directory. You'd use it to create and remove staff accounts.",
+      "seenIn": [
+        "01",
+        "03",
+        "06",
+        "09",
+        "10"
+      ]
+    },
+    {
+      "term": "Active Directory (AD)",
+      "plain": "The older, on-site version of the same thing - the database of users, computers and permissions in a company.",
+      "seenIn": [
+        "04",
+        "05"
+      ]
+    },
+    {
+      "term": "Ticket / ticketing system",
+      "plain": "A logged request from a staff member or customer. You pick it up, fix it, and write down what you did. 'Level 1' tickets are the simple ones.",
+      "seenIn": [
+        "01",
+        "02",
+        "03",
+        "05",
+        "08",
+        "10"
+      ]
+    },
+    {
+      "term": "Level 1 / Level 2 / L1 / L2",
+      "plain": "How difficult the problem is. Level 1 is password resets and printers. Level 2 is harder stuff. If you can't fix it, you 'escalate' it to someone more senior.",
+      "seenIn": [
+        "03",
+        "05",
+        "06",
+        "08"
+      ]
+    },
+    {
+      "term": "Escalate",
+      "plain": "Passing a problem to someone more senior when you can't solve it. Ads treat knowing WHEN to escalate as a skill, not a failure.",
+      "seenIn": [
+        "02",
+        "03",
+        "05",
+        "07"
+      ]
+    },
+    {
+      "term": "MSP (Managed Service Provider)",
+      "plain": "A company that runs IT for other businesses. You'd support many different clients rather than one employer.",
+      "seenIn": [
+        "03",
+        "04",
+        "05",
+        "08"
+      ]
+    },
+    {
+      "term": "SaaS",
+      "plain": "Software as a Service - software you use through a browser instead of installing it. Most workplace tools now.",
+      "seenIn": [
+        "02",
+        "07"
+      ]
+    },
+    {
+      "term": "CompTIA A+ / Network+",
+      "plain": "Entry-level IT certificates. You study and sit an exam. Nine of these ten ads mention certifications, but only one actually requires you to have one.",
+      "seenIn": [
+        "01",
+        "02",
+        "03",
+        "05",
+        "08",
+        "09"
+      ]
+    },
+    {
+      "term": "AZ-900 / MS-900 / SC-900",
+      "plain": "Microsoft's beginner certificates for cloud, Microsoft 365 and security. Cheap, done online, and several employers here pay for them.",
+      "seenIn": [
+        "08",
+        "09"
+      ]
+    },
+    {
+      "term": "Unrestricted working rights",
+      "plain": "They need to know your visa lets you work the hours the job needs. Check your own conditions before you rule yourself out - student and graduate visas differ.",
+      "seenIn": [
+        "03",
+        "06",
+        "10"
+      ]
+    },
+    {
+      "term": "National Police Check",
+      "plain": "A background check you apply for and pay for. Takes days to weeks. One ad here needs it issued within 3 months and renewed every year.",
+      "seenIn": [
+        "10"
+      ]
+    },
+    {
+      "term": "Working with Children Check (Blue Card in QLD)",
+      "plain": "Required for any job around under-18s. You apply through the state. Takes weeks, so start it before you apply, not after the interview.",
+      "seenIn": [
+        "10"
+      ]
+    },
+    {
+      "term": "Salary packaging",
+      "plain": "Not-for-profits can pay part of your salary before tax, so you take home more. The Indie Education ad offers up to $15,900 plus $2,650 for meals.",
+      "seenIn": [
+        "10"
+      ]
+    },
+    {
+      "term": "Enterprise Agreement / Level 3",
+      "plain": "A pay scale negotiated for the whole organisation. 'Level 3' tells you where you sit on it. The rate is fixed, so there's less to negotiate.",
+      "seenIn": [
+        "10"
+      ]
+    },
+    {
+      "term": "On-call roster",
+      "plain": "You take turns being contactable outside work hours in case something breaks. One ad here has it, one explicitly says they don't.",
+      "seenIn": [
+        "08"
+      ]
+    },
+    {
+      "term": "Hybrid",
+      "plain": "Split between office and home. Check the specific days - one ad here requires Monday, Tuesday and Thursday in the office.",
+      "seenIn": [
+        "02",
+        "04",
+        "06",
+        "08"
+      ]
+    },
+    {
+      "term": "TCP/IP, DNS, DHCP, VLAN, VPN",
+      "plain": "Basic networking terms - how computers find each other and connect. Ads calling for 'networking fundamentals' mean these.",
+      "seenIn": [
+        "03",
+        "05",
+        "09"
+      ]
+    },
+    {
+      "term": "PowerShell / Bash",
+      "plain": "Text commands used to do admin tasks quickly instead of clicking. Listed as helpful-not-essential in the entry-level ads.",
+      "seenIn": [
+        "09"
+      ]
+    }
+  ],
+  "mustHave": [
+    {
+      "item": "Right to work in Australia",
+      "count": 9,
+      "note": "Asked in the application questions of almost every ad. Know your own visa conditions before applying."
+    },
+    {
+      "item": "Clear communication with non-technical people",
+      "count": 9,
+      "note": "Every ad asks for this in some form. Several list it before any technical skill."
+    },
+    {
+      "item": "Troubleshooting and problem-solving",
+      "count": 10,
+      "note": "The one genuinely universal requirement across all ten ads."
+    },
+    {
+      "item": "Microsoft 365 familiarity",
+      "count": 9,
+      "note": "The single most common technical requirement. Worth learning first if you're starting from zero."
+    },
+    {
+      "item": "Australian driver's licence",
+      "count": 5,
+      "note": "Half the ads. Some also require your own car for travel to client sites."
+    },
+    {
+      "item": "Documenting your work",
+      "count": 7,
+      "note": "Writing down what you did. Mentioned as a real requirement, not an afterthought."
+    },
+    {
+      "item": "National Police Check",
+      "count": 1,
+      "note": "Education and government employers. Takes days to weeks - start early."
+    },
+    {
+      "item": "Working with Children Check",
+      "count": 1,
+      "note": "Required where the workplace involves under-18s. Weeks to obtain."
+    }
+  ],
+  "niceToHave": [
+    {
+      "item": "IT certification (CompTIA, Microsoft, Cisco)",
+      "count": 9,
+      "note": "Mentioned in 9 of 10 ads but required in only 1. Most employers here will pay for yours after you start."
+    },
+    {
+      "item": "Tertiary qualification in IT",
+      "count": 8,
+      "note": "Not one ad required a completed qualification. Every single one said 'or equivalent experience', 'or working towards one', or listed study as optional."
+    },
+    {
+      "item": "Networking beyond the basics (firewalls, routing, VLANs)",
+      "count": 5,
+      "note": "Consistently in the bonus list, not the essential list."
+    },
+    {
+      "item": "Scripting (PowerShell, Bash, Python)",
+      "count": 3,
+      "note": "Listed as helpful, never required, even in the systems administration role."
+    },
+    {
+      "item": "SQL or databases",
+      "count": 3,
+      "note": "One ad listed it as required; the rest treat it as a bonus."
+    },
+    {
+      "item": "MSP or ISP experience",
+      "count": 4,
+      "note": "Nice to have. Not having it doesn't stop you applying."
+    },
+    {
+      "item": "Virtualisation (VMware, Hyper-V)",
+      "count": 3,
+      "note": "Bonus territory across the board."
+    },
+    {
+      "item": "Industry-specific knowledge",
+      "count": 3,
+      "note": "Fitness, education, telco. Explicitly 'desirable but not essential' where mentioned."
+    }
+  ],
+  "getReady": [
+    {
+      "item": "Working with Children Check (Blue Card)",
+      "time": "Several weeks",
+      "why": "Only needed for education or youth-facing employers, but it's the longest lead time of anything here. Start it the moment you consider those roles."
+    },
+    {
+      "item": "National Police Check",
+      "time": "Days to a few weeks",
+      "why": "One ad required it issued within the last 3 months. You apply and pay for it yourself."
+    },
+    {
+      "item": "Driver's licence",
+      "time": "Months if you don't have one",
+      "why": "Half these ads want it. If you don't have an Australian licence, this shapes which jobs you can realistically target."
+    },
+    {
+      "item": "Two referees with contact details",
+      "time": "A day or two",
+      "why": "Several ads ask for these upfront. Message people now and ask permission rather than scrambling."
+    },
+    {
+      "item": "An entry-level certificate (AZ-900 or MS-900)",
+      "time": "1-2 weeks of study",
+      "why": "Cheap, online, and it appears in 9 of 10 ads. Not required anywhere, but it's the fastest way to look serious."
+    },
+    {
+      "item": "A cover letter addressing the selection criteria",
+      "time": "2-3 hours",
+      "why": "Two ads asked for this specifically. It means writing a response to each requirement, not a general letter."
+    },
+    {
+      "item": "One story about a technical problem you solved",
+      "time": "30 minutes",
+      "why": "One ad asks for this directly, and it comes up in every interview. Say what broke, what you did, and what changed."
+    },
+    {
+      "item": "Check your visa work conditions",
+      "time": "10 minutes",
+      "why": "9 of 10 ads ask about work rights. Know your exact answer so you don't self-reject from a job you're allowed to do."
+    }
+  ]
+}
