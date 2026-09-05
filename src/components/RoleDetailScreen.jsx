@@ -45,7 +45,7 @@ export default function RoleDetailScreen({ role, onBack }) {
       </div>
 
       {activeTab === 0 && (
-        <div className="in">
+        <div className="in words-card">
           {data.terms.map((term, i) => (
             <TermItem key={term.term} term={term} defaultOpen={i === 0} />
           ))}
@@ -60,7 +60,7 @@ export default function RoleDetailScreen({ role, onBack }) {
       )}
 
       {activeTab === 2 && (
-        <div className="in">
+        <div className="in getready-card">
           {data.getReady.map((item, i) => (
             <div key={i} className="chk">
               <div

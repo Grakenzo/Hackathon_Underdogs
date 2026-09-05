@@ -14,7 +14,7 @@ export default function SuggestionsScreen({ topRoles, answers, onSelectRole }) {
       <div className="rule" />
 
       <div className="three">
-        {topRoles.map(({ role }, i) => (
+        {topRoles.map((role, i) => (
           <RoleCard
             key={role.id}
             role={role}
