@@ -1,22 +1,17 @@
 import { useState } from 'react';
 
-// One entry in "What the words mean". Collapsible - starts expanded or
-// collapsed based on `defaultOpen`, which RoleDetailScreen sets to true
-// for the first three terms only.
+// One accordion entry in "The words" tab. Starts open or closed based on
+// `defaultOpen`, which RoleDetailScreen sets to true for the first term only.
 export default function TermItem({ term, defaultOpen }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="term-item">
-      <button
-        className="term-item__toggle"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-expanded={isOpen}
-      >
-        <strong className="term-item__term">{term.term}</strong>
-        <span className="term-item__chevron">{isOpen ? '−' : '+'}</span>
+    <div className={`acc${isOpen ? ' open' : ''}`}>
+      <button className="acch" onClick={() => setIsOpen(!isOpen)} aria-expanded={isOpen}>
+        {term.term}
+        <span className="cv">⌄</span>
       </button>
-      {isOpen && <p className="term-item__plain">{term.plain}</p>}
+      {isOpen && <div className="accb">{term.plain}</div>}
     </div>
   );
 }
