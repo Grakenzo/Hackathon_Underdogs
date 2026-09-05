@@ -55,8 +55,7 @@ library, no backend — everything lives in `src/data/`:
 You'll need [Node.js](https://nodejs.org) 18 or later.
 
 ```bash
-git clone https://github.com/Grakenzo/Hackathon_Underdogs.git
-cd Hackathon_Underdogs
+cd C:\Users\Grakenzo\Hackathon_Underdogs\Hackathon_Underdogs
 npm install
 npm run dev
 ```
@@ -64,33 +63,7 @@ npm run dev
 Then open the URL it prints — **http://localhost:3000** by default (see
 `vite.config.js`).
 
-Other commands:
 
-```bash
-npm run build      # production build, output in dist/
-npm run preview    # serve that production build locally
-```
-
-### Troubleshooting (Windows)
-
-**`npm install`/`npm run dev` fails with a "running scripts is disabled on
-this system" / `UnauthorizedAccess` error in PowerShell.** This is Windows
-PowerShell's default security policy blocking npm's own script wrapper
-(`npm.ps1`) — it's unrelated to this project and happens the first time npm
-is used in PowerShell on a fresh machine. Two ways to fix it:
-
-- Easiest: run the same commands in **Command Prompt** instead of
-  PowerShell (`Win + R` → `cmd`), which doesn't have this restriction.
-- Or, to keep using PowerShell, run this once (only needed the first time):
-  ```powershell
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-  ```
-  Confirm with `Y` if prompted, then retry `npm install`.
-
-**The app still looks like an old design after `npm run dev`.** Make sure
-you're actually on the latest `main` (`git checkout main && git pull origin
-main`), then hard-refresh the browser (`Ctrl+Shift+R`) — a normal refresh can
-serve cached CSS/JS from a previous run.
 
 **`npm error ... no such file or directory, open 'package.json'`.** You ran
 the command outside the project folder. `cd` into the folder that contains
