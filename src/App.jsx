@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { quizQuestions } from './data/quiz.js';
 import { roles } from './data/roles.js';
-import { getTopRoles } from './data/scoring.js';
+import { scoreRoles } from './data/scoring.js';
 import StartScreen from './components/StartScreen.jsx';
 import QuizScreen from './components/QuizScreen.jsx';
 import SuggestionsScreen from './components/SuggestionsScreen.jsx';
@@ -61,7 +61,7 @@ export default function App() {
   // screen - no point scoring on every keystroke of the quiz.
   const topRoles = useMemo(() => {
     if (screen !== SCREENS.SUGGESTIONS) return [];
-    return getTopRoles(answers, roles, 3);
+    return scoreRoles(answers.filter(Boolean), roles);
   }, [screen, answers]);
 
   return (
