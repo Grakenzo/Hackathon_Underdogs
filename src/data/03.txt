@@ -1,0 +1,55 @@
+Junior IT Support Officer
+Defy IT
+Indooroopilly, Brisbane QLD
+Help Desk & IT Support (Information & Communication Technology)
+Part time
+$27 – $30 per hour
+
+IT Support Technician (Level 1) — Part-time
+Defy IT | Indooroopilly, Brisbane QLD | Part-time, 3 days / 22.5 hours per week
+$27-$30 per hour + super + km allowance
+
+About Us:
+Defy IT is a Brisbane-based managed service provider looking after around 40 small businesses across legal, healthcare, accounting, professional services and trades.
+
+The Role:
+We're after a Level 1 technician to take first-line support across our client base, with a growth path to Level 2 as you build depth. The split is roughly 75% technical, 25% business support.
+
+What You'll Do:
+- First-line support via phone, email, remote tools and onsite visits
+- Troubleshoot and resolve hardware, software and network issues
+- Install and configure workstations, printers, and network equipment
+- Support Microsoft 365, Entra ID, Windows 10/11 and Windows Server environments
+- Onsite visits to small-business clients across greater Brisbane
+- Document work properly in our PSA and documentation platforms
+- Assist with scheduling, quoting and hardware ordering
+- Escalate cleanly — knowing when to hand something up is a skill we value
+
+Our Stack:
+NinjaOne RMM, SuperOps, Microsoft 365 and Entra ID, Windows Server, UniFi networking, and Proxmox. Familiarity is a bonus, not a requirement.
+
+What You'll Bring:
+- Certificate IV or Diploma in Information Technology, or equivalent hands-on experience
+- Around 12 months in an IT support role with fieldwork experience
+- Current driver's licence and a reliable vehicle — onsite work is part of the job
+- Working knowledge of Windows, Microsoft 365, and networking fundamentals (DHCP, DNS, VLANs, VPN)
+- Clear written and verbal communication
+- Unrestricted working rights in Australia
+
+Bonus points for:
+- Active Directory, Group Policy, or basic Windows Server administration
+- Azure, Google Workspace, or Microsoft 365 admin experience
+- Networking beyond the basics — firewalls, VLANs, site-to-site VPN
+- Certifications (CompTIA A+ or Network+, Microsoft Fundamentals, or similar)
+- Linux Server Administration Experience
+
+How to Apply:
+Apply with your resume and a short note covering two things: the most interesting technical problem you've solved, and what you want to be doing in three years.
+
+Employer questions:
+- Which of the following statements best describes your right to work in Australia?
+- How many years' experience do you have as a Computer Technician?
+- Do you have a current Australian driver's licence?
+- Do you have customer service experience?
+- Do you have professional experience troubleshooting and repairing hardware issues on PC and laptop?
+- Do you own or have regular access to a car?
