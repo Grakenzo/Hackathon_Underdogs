@@ -9,7 +9,7 @@ export default function QuizScreen({ questions, questionIndex, selectedOption, o
     <div className="screen quiz-screen">
       <div className="quiz-screen__header">
         {questionIndex > 0 ? (
-          <button className="btn btn--text quiz-screen__back" onClick={onBack}>
+          <button className="btn btn--text btn--text-accent quiz-screen__back" onClick={onBack}>
             ← Back
           </button>
         ) : (
@@ -21,18 +21,21 @@ export default function QuizScreen({ questions, questionIndex, selectedOption, o
       </div>
 
       <div className="progress-bar" role="progressbar" aria-valuenow={questionIndex + 1} aria-valuemin={1} aria-valuemax={questions.length}>
-        <div className="progress-bar__fill" style={{ width: `${progress}%` }} />
+        {/* transform, not width, so this only ever animates a compositor-friendly property */}
+        <div className="progress-bar__fill" style={{ transform: `scaleX(${progress / 100})` }} />
       </div>
 
       <h2 className="quiz-screen__question">{question.question}</h2>
 
-      <div className="quiz-screen__options">
+      {/* Keyed by question so options remount (and re-stagger in) on every question change */}
+      <div className="quiz-screen__options" key={questionIndex}>
         {question.options.map((option, i) => {
           const isSelected = selectedOption === option;
           return (
             <button
               key={i}
               className={`option-card${isSelected ? ' option-card--selected' : ''}`}
+              style={{ animationDelay: `${i * 60}ms` }}
               onClick={() => onAnswer(option)}
             >
               {option.text}
