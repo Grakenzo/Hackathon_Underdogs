@@ -55,7 +55,7 @@ library, no backend — everything lives in `src/data/`:
 You'll need [Node.js](https://nodejs.org) 18 or later.
 
 ```bash
-cd Hackathon_Underdogs
+cd C:\Users\Grakenzo\Hackathon_Underdogs\Hackathon_Underdogs
 npm install
 npm run dev
 ```
