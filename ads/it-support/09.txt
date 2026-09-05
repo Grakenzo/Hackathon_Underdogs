@@ -1,0 +1,47 @@
+Junior Systems Administrator
+DataMC
+Brisbane QLD
+Networks & Systems Administration (Information & Communication Technology)
+Full time
+Salary undisclosed
+
+About the role:
+You will join DataMC's Infrastructure and IT Operations team as a Junior Systems Administrator. This is an entry-level development opportunity where you will receive practical training while learning DataMC's systems, processes and technology environment from the ground up.
+
+Key responsibilities:
+- Support Microsoft 365, Microsoft Entra ID, Intune and Azure
+- Prepare and manage Windows and Linux devices
+- Create and maintain user accounts, permissions and security groups
+- Support employee onboarding and offboarding across multiple countries
+- Troubleshoot device, software, access and connectivity issues
+- Assist with system monitoring, backups, updates and patching
+- Investigate networking and cloud-service issues
+- Write and maintain clear technical documentation
+- Use PowerShell, Bash and Python for administration and automation
+- Follow security policies, change-control requirements and approved workflows
+
+About you:
+- Curious and eager to learn
+- Logical and methodical when investigating problems
+- Comfortable asking questions when unsure
+- Security-conscious and careful when making changes
+- Organised, reliable and attentive to detail
+- Able to communicate clearly with technical and non-technical people
+- Patient and respectful when supporting employees and clients
+
+Helpful but not essential:
+- Current or completed study in IT, computer science, cybersecurity, data or a related field
+- Basic knowledge of Windows or Linux
+- Familiarity with Linux command-line tools
+- Understanding of networking concepts such as TCP/IP, DNS, Wi-Fi and VPNs
+- Awareness of cloud-computing concepts
+- Familiarity with Microsoft 365
+- Basic knowledge of PowerShell, Bash, Python or another scripting language
+- Basic knowledge of SQL or relational databases
+- Entry-level certifications such as AZ-900, SC-900 or MS-900
+
+Employer questions:
+- Which of the following statements best describes your right to work in Australia?
+- What's your expected annual base salary?
+- How many years' experience do you have as a systems administrator?
+- How much notice are you required to give your current employer?
