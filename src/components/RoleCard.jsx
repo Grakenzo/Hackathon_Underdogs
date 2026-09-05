@@ -17,7 +17,12 @@ export default function RoleCard({ role, answers, onSelect }) {
         <p className="role-card__reasoning">A solid match for how you answered.</p>
       )}
       {!role.hasData && (
-        <span className="role-card__badge">Requirements coming soon</span>
+        <div className="role-card__status">
+          <span className="role-card__status-label">Not mapped from real job ads yet</span>
+          <span className="role-card__status-hint">
+            Look for a role marked ready below for the full breakdown.
+          </span>
+        </div>
       )}
     </>
   );

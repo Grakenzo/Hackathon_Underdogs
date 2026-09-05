@@ -1,21 +1,42 @@
 /* ---------------------------------------------------------------------
    Pathfinder - plain CSS, mobile-first, no UI library.
+   Rebuilt against DESIGN.md. Two moods, one system:
+     - Start / Quiz / Suggestions = the hook. Playful, warm, tactile cards.
+     - Role detail = the reference document. Calm, flat, generous space.
    Sections below follow the four screens in order.
    --------------------------------------------------------------------- */
 
 :root {
-  --color-bg: #faf9f7;
+  /* ---- warm neutral palette + exactly one accent ---- */
+  --color-bg: #f7f3ee;
   --color-surface: #ffffff;
-  --color-border: #e3e0da;
-  --color-text: #1f1d1a;
-  --color-muted: #6b6660;
-  --color-primary: #1f6f5c;
-  --color-primary-dark: #16513f;
-  --color-disabled-bg: #eeece8;
-  --color-disabled-text: #a6a29b;
-  --color-callout-bg: #fff3d9;
-  --color-callout-border: #f0c96b;
-  --radius: 14px;
+  --color-sunken: #ede6db; /* neutral fill: disabled bg, neutral badges */
+  --color-border: #ddd2bf;
+  --color-divider: #e6ddd0;
+
+  --color-text: #23201b; /* primary: large/bold/dark - never all three at once */
+  --color-text-secondary: #6f6656; /* secondary + tertiary body copy (5.6:1 on white) */
+  --color-text-faint: #9c8f7c; /* disabled/inert only - not for readable body text */
+
+  --color-accent: #b5541f; /* single accent: deep warm terracotta, ~71% sat */
+  --color-accent-dark: #8d4218;
+  --color-accent-soft: #f6e4d6;
+
+  /* ---- spacing scale - use only these values ---- */
+  --space-1: 4px; /* tight coupling */
+  --space-2: 8px; /* related elements */
+  --space-3: 16px; /* standard gap */
+  --space-4: 24px; /* section internal */
+  --space-5: 48px; /* between sections */
+  --space-6: 64px; /* major breaks */
+
+  --radius-playful: 14px; /* quiz mood: rounded, tactile */
+  --radius-sober: 6px; /* role detail: flat, minimal */
+
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 280ms;
+
   --max-width: 480px;
 }
 
@@ -34,6 +55,20 @@ body {
   color: var(--color-text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+p {
+  margin: 0;
 }
 
 .app {
@@ -45,9 +80,36 @@ body {
 .screen {
   width: 100%;
   max-width: var(--max-width);
-  padding: 24px 20px 48px;
+  padding: var(--space-4) var(--space-3) var(--space-6);
   display: flex;
   flex-direction: column;
+}
+
+/* Visible keyboard focus ring everywhere, on top of the warm palette. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes option-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ---------- shared bits ---------- */
@@ -57,85 +119,90 @@ body {
   cursor: pointer;
   border-radius: 999px;
   border: none;
+  min-height: 44px;
 }
 
 .btn--primary {
-  background: var(--color-primary);
+  background: var(--color-accent);
   color: #fff;
-  padding: 16px 24px;
-  font-size: 1.05rem;
+  padding: var(--space-3) var(--space-4);
+  font-size: 1.0625rem;
   font-weight: 600;
+  transition: background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
 }
 
 .btn--primary:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-accent-dark);
+}
+
+.btn--primary:active {
+  transform: scale(0.98);
 }
 
 .btn--text {
   background: none;
-  color: var(--color-primary);
-  padding: 8px 0;
-  font-size: 0.95rem;
+  color: var(--color-text-secondary);
   font-weight: 600;
-  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-1);
+  border-radius: 6px;
+}
+
+/* Used on the quiz's Back button only - a spot of the playful mood's accent. */
+.btn--text-accent {
+  color: var(--color-accent);
 }
 
 .notice {
-  background: var(--color-callout-bg);
-  border: 1px solid var(--color-callout-border);
-  border-radius: var(--radius);
-  padding: 12px 16px;
-  font-size: 0.9rem;
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-playful);
+  padding: var(--space-3);
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  max-width: 65ch;
 }
 
-.callout {
-  background: var(--color-callout-bg);
-  border-left: 4px solid var(--color-callout-border);
-  border-radius: 8px;
-  padding: 16px;
-  font-weight: 600;
-  font-size: 1.05rem;
-  margin-bottom: 28px;
-}
-
-/* ---------- Screen 1: Start ---------- */
+/* ---------- Screen 1: Start (playful) ---------- */
 
 .start-screen__heading {
-  font-size: 2.2rem;
-  margin: 12px 0 4px;
+  font-size: 2.25rem;
+  margin: var(--space-2) 0 var(--space-1);
 }
 
 .start-screen__subheading {
-  color: var(--color-muted);
-  margin: 0 0 24px;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-5);
+  max-width: 65ch;
 }
 
 .start-screen__cta {
   width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
 }
 
 .start-screen__or {
   text-align: center;
-  color: var(--color-muted);
-  font-size: 0.85rem;
-  margin: 0 0 16px;
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+  margin: 0 0 var(--space-3);
 }
 
 .category-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .category-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
-  border-radius: var(--radius);
+  min-height: 44px;
+  padding: var(--space-3);
+  border-radius: var(--radius-playful);
   border: 1px solid var(--color-border);
   font: inherit;
   text-align: left;
@@ -144,35 +211,49 @@ body {
 .category-card--enabled {
   background: var(--color-surface);
   cursor: pointer;
+  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
 }
 
 .category-card--enabled:hover {
-  border-color: var(--color-primary);
+  border-color: var(--color-accent);
 }
 
+.category-card--enabled:active {
+  transform: scale(0.98);
+}
+
+/* Genuinely inert: reduced contrast, no hover state, default cursor. */
 .category-card--disabled {
-  background: var(--color-disabled-bg);
-  color: var(--color-disabled-text);
+  background: var(--color-sunken);
+  border-color: var(--color-sunken);
+  color: var(--color-text-faint);
+  cursor: default;
 }
 
 .category-card__name {
   font-weight: 600;
 }
 
-.category-card__badge {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+.category-card--disabled .category-card__name {
+  font-weight: 600;
+  color: var(--color-text-faint);
 }
 
-/* ---------- Screen 2: Quiz ---------- */
+.category-card__badge {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-faint);
+}
+
+/* ---------- Screen 2: Quiz (playful) ---------- */
 
 .quiz-screen__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
-  min-height: 32px;
+  margin-bottom: var(--space-2);
+  min-height: 44px;
 }
 
 .quiz-screen__back-spacer {
@@ -181,124 +262,169 @@ body {
 }
 
 .quiz-screen__progress-label {
-  color: var(--color-muted);
-  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
 .progress-bar {
-  background: var(--color-border);
+  background: var(--color-sunken);
   border-radius: 999px;
   height: 6px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-4);
 }
 
 .progress-bar__fill {
-  background: var(--color-primary);
+  width: 100%;
   height: 100%;
-  transition: width 0.2s ease;
+  background: var(--color-accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform var(--dur-slow) ease;
 }
 
 .quiz-screen__question {
-  font-size: 1.4rem;
-  line-height: 1.35;
-  margin: 0 0 24px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+  max-width: 65ch;
 }
 
 .quiz-screen__options {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .option-card {
+  width: 100%;
   text-align: left;
   background: var(--color-surface);
   border: 2px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 16px;
+  border-radius: var(--radius-playful);
+  padding: var(--space-3);
   font: inherit;
   font-size: 1rem;
+  line-height: 1.6;
   cursor: pointer;
   color: var(--color-text);
+  min-height: 44px;
+  animation: option-enter var(--dur-base) ease-out both;
+  transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
 }
 
 .option-card:hover {
-  border-color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+.option-card:active {
+  transform: scale(0.98);
 }
 
 .option-card--selected {
-  border-color: var(--color-primary);
-  background: #eaf4f1;
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
 }
 
-/* ---------- Screen 3: Suggestions ---------- */
+/* ---------- Screen 3: Suggestions (playful) ---------- */
 
 .suggestions-screen__heading {
-  margin: 0 0 16px;
+  font-size: 1.5rem;
+  margin: 0 0 var(--space-3);
 }
 
 .suggestions-screen__list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: var(--space-3);
 }
 
 .role-card {
   text-align: left;
-  border-radius: var(--radius);
+  border-radius: var(--radius-playful);
   border: 1px solid var(--color-border);
-  padding: 18px;
+  padding: var(--space-4);
   font: inherit;
 }
 
 .role-card--enabled {
   background: var(--color-surface);
   cursor: pointer;
+  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
 }
 
 .role-card--enabled:hover {
-  border-color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+.role-card--enabled:active {
+  transform: scale(0.98);
 }
 
 .role-card--disabled {
-  background: var(--color-disabled-bg);
+  background: var(--color-sunken);
+  border-color: var(--color-sunken);
+  cursor: default;
 }
 
 .role-card__name {
-  margin: 0 0 8px;
+  font-size: 1.125rem;
+  margin: 0 0 var(--space-2);
+}
+
+.role-card--disabled .role-card__name {
+  color: var(--color-text-faint);
 }
 
 .role-card__reasoning {
-  margin: 0;
-  color: var(--color-muted);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 65ch;
 }
 
-.role-card__badge {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 0.75rem;
+.role-card--disabled .role-card__reasoning {
+  color: var(--color-text-faint);
+}
+
+/* The "coming soon" state is composed, not apologetic: it names what IS
+   available rather than just marking this card as unavailable. */
+.role-card__status {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.role-card__status-label {
+  display: block;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--color-disabled-text);
+  color: var(--color-text-faint);
+  font-size: 0.9375rem;
 }
 
-/* ---------- Screen 4: Role detail ---------- */
+.role-card__status-hint {
+  display: block;
+  color: var(--color-text-faint);
+  font-size: 0.9375rem;
+  margin-top: var(--space-1);
+}
+
+/* ---------- Screen 4: Role detail (sober) ---------- */
+/* No card containers, no shadows, no stagger - this screen appears at once
+   and reads like a reference document: flat lists, dividers, generous air. */
 
 .role-detail-screen__back {
-  margin-bottom: 12px;
+  margin-bottom: var(--space-3);
 }
 
 .role-detail-screen__header {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
 }
 
 .role-detail-screen__name {
-  margin: 0 0 6px;
+  font-size: 1.75rem;
+  margin: 0 0 var(--space-2);
 }
 
 .role-detail-screen__subtitle {
@@ -308,59 +434,77 @@ body {
 }
 
 .role-detail-screen__collected {
-  margin: 2px 0 0;
-  color: var(--color-muted);
-  font-size: 0.85rem;
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-secondary);
+  max-width: 65ch;
+}
+
+.callout {
+  background: var(--color-sunken);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 var(--radius-sober) var(--radius-sober) 0;
+  padding: var(--space-3) var(--space-4);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0 0 var(--space-5);
+  max-width: 65ch;
 }
 
 .role-detail-section {
-  margin-bottom: 32px;
+  margin-bottom: var(--space-5);
 }
 
 .role-detail-section__title {
-  margin: 0 0 14px;
+  font-size: 1.25rem;
+  margin: 0 0 var(--space-4);
 }
 
-/* -- terms -- */
+/* -- terms: a divided list, not a stack of boxes -- */
 
 .term-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  border-top: 1px solid var(--color-divider);
 }
 
 .term-item {
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: var(--color-surface);
-  padding: 4px 14px;
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .term-item__toggle {
   width: 100%;
+  min-height: 44px;
   background: none;
   border: none;
-  padding: 12px 0;
+  padding: var(--space-3) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-3);
   font: inherit;
+  font-size: 1rem;
   text-align: left;
   cursor: pointer;
   color: var(--color-text);
+  transition: color var(--dur-fast) ease;
+}
+
+.term-item__toggle:hover {
+  color: var(--color-accent-dark);
 }
 
 .term-item__chevron {
-  color: var(--color-primary);
-  font-size: 1.2rem;
+  flex-shrink: 0;
+  color: var(--color-accent);
+  font-size: 1.25rem;
   line-height: 1;
 }
 
 .term-item__plain {
-  margin: 0 0 14px;
-  color: var(--color-muted);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 65ch;
+  margin: 0 0 var(--space-4);
+  animation: fade-in var(--dur-base) ease;
 }
 
 /* -- must have / nice to have -- */
@@ -368,101 +512,111 @@ body {
 .requirement-columns {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: var(--space-5);
 }
 
 .requirement-list__title {
-  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
 }
 
 .requirement-list__items {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  border-top: 1px solid var(--color-divider);
 }
 
 .requirement-item {
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-divider);
+  padding: var(--space-3) 0;
 }
 
 .requirement-item__top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 10px;
+  gap: var(--space-2) var(--space-3);
 }
 
+/* Requirement text is primary: dark, semibold. The badge and note below
+   are secondary/tertiary - they support the text, they don't compete. */
 .requirement-item__text {
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .requirement-item__badge {
   flex-shrink: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--color-primary-dark);
-  background: #eaf4f1;
+  color: var(--color-text-secondary);
+  background: var(--color-sunken);
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 2px var(--space-2);
   white-space: nowrap;
 }
 
-.requirement-item__note {
-  margin: 4px 0 0;
-  color: var(--color-muted);
-  font-size: 0.85rem;
-  line-height: 1.4;
+/* Must-have items get the one accent colour, as the more load-bearing
+   column; nice-to-have stays neutral. That's the whole differentiation -
+   no red/green, just how much of the single accent is used. */
+.requirement-list:first-child .requirement-item__badge {
+  color: var(--color-accent-dark);
+  background: var(--color-accent-soft);
 }
 
-/* -- get ready -- */
+.requirement-item__note {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 65ch;
+  margin: var(--space-1) 0 0;
+}
+
+/* -- get ready: same divided-list treatment as must-have/nice-to-have -- */
 
 .get-ready-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  border-top: 1px solid var(--color-divider);
 }
 
 .get-ready-item {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-divider);
+  padding: var(--space-3) 0;
 }
 
 .get-ready-item__top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 10px;
+  gap: var(--space-2) var(--space-3);
 }
 
 .get-ready-item__text {
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .get-ready-item__badge {
   flex-shrink: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  color: #8a5a00;
-  background: var(--color-callout-bg);
+  color: var(--color-text-secondary);
+  background: var(--color-sunken);
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 2px var(--space-2);
   white-space: nowrap;
 }
 
 .get-ready-item__why {
-  margin: 6px 0 0;
-  color: var(--color-muted);
-  font-size: 0.85rem;
-  line-height: 1.4;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 65ch;
+  margin: var(--space-1) 0 0;
 }
 
 /* ---------------------------------------------------------------------
@@ -472,10 +626,18 @@ body {
 @media (min-width: 700px) {
   .screen {
     max-width: 760px;
-    padding: 40px 32px 64px;
+    padding: var(--space-6) var(--space-4) var(--space-6);
   }
 
   .requirement-columns {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Respect reduced-motion: no entrance animation, instant state changes. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }
