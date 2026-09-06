@@ -11,7 +11,21 @@ export default function TermItem({ term, defaultOpen }) {
         {term.term}
         <span className="cv">⌄</span>
       </button>
-      {isOpen && <div className="accb">{term.plain}</div>}
+      {isOpen && (
+        <div className="accb">
+          {term.plain}
+          {term.learnMore && (
+            <a
+              className="accb__link"
+              href={term.learnMore}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn more →
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -8,75 +8,93 @@
   "terms": [
     {
       "term": "Right to work in Australia",
-      "plain": "Employers have to check that your visa lets you do the job. Student visas, graduate visas and permanent residency all allow different things. Look up your own visa conditions before you decide you can't apply. Many people rule themselves out when they didn't need to."
+      "plain": "Employers have to check that your visa lets you do the job. Student visas, graduate visas and permanent residency all allow different things. Look up your own visa conditions before you decide you can't apply. Many people rule themselves out when they didn't need to.",
+      "learnMore": "https://immi.homeaffairs.gov.au/visas/already-have-a-visa/check-visa-details-and-conditions/work-in-australia"
     },
     {
       "term": "\"Unrestricted working rights\"",
-      "plain": "This means no limit on your hours. A student visa usually has a limit, so this wording may not fit you. But not every job that says it actually needs it, so it can be worth asking."
+      "plain": "This means no limit on your hours. A student visa usually has a limit, so this wording may not fit you. But not every job that says it actually needs it, so it can be worth asking.",
+      "learnMore": "https://immi.homeaffairs.gov.au/visas/already-have-a-visa/check-visa-details-and-conditions/work-in-australia"
     },
     {
       "term": "Police check",
-      "plain": "A document that shows whether you have a criminal record. You apply online, pay a fee, and wait. It can take a few days or a few weeks. Some employers want one issued in the last three months."
+      "plain": "A document that shows whether you have a criminal record. You apply online, pay a fee, and wait. It can take a few days or a few weeks. Some employers want one issued in the last three months.",
+      "learnMore": "https://www.afp.gov.au/what-we-do/services/criminal-records/national-police-checks"
     },
     {
       "term": "Blue Card (Working with Children Check)",
-      "plain": "Required in Queensland for any job where you might be around people under 18. You apply through the state government. It takes weeks, so start it early if you're looking at schools or youth services."
+      "plain": "Required in Queensland for any job where you might be around people under 18. You apply through the state government. It takes weeks, so start it early if you're looking at schools or youth services.",
+      "learnMore": "https://www.bluecard.qld.gov.au/apply"
     },
     {
       "term": "Referees",
-      "plain": "Two people who can speak about your work. A manager, a supervisor, or a lecturer if you haven't worked yet. Ask them first. Don't put someone's number down without checking."
+      "plain": "Two people who can speak about your work. A manager, a supervisor, or a lecturer if you haven't worked yet. Ask them first. Don't put someone's number down without checking.",
+      "learnMore": "https://www.seek.com.au/career-advice/article/how-to-choose-referees"
     },
     {
       "term": "\"Essential\" vs \"Desirable\"",
-      "plain": "Essential means you need it. Desirable, preferred, advantageous, or \"bonus points\" all mean the same thing: nice to have, not required. If you have the essentials, apply. Missing a desirable is normal."
+      "plain": "Essential means you need it. Desirable, preferred, advantageous, or \"bonus points\" all mean the same thing: nice to have, not required. If you have the essentials, apply. Missing a desirable is normal.",
+      "learnMore": "https://www.seek.com.au/career-advice/article/how-to-read-a-job-ad"
     },
     {
       "term": "Level 1 and Level 2 support",
-      "plain": "How hard the problem is. Level 1 is passwords, printers, common issues. Level 2 is more complex. If you can't fix something you pass it up, which is called escalating. Nobody expects you to solve everything."
+      "plain": "How hard the problem is. Level 1 is passwords, printers, common issues. Level 2 is more complex. If you can't fix something you pass it up, which is called escalating. Nobody expects you to solve everything.",
+      "learnMore": "https://www.seek.com.au/career-advice/article/it-support-careers"
     },
     {
       "term": "Ticket / ticketing system",
-      "plain": "When someone has a problem they log a request, called a ticket. You pick it up, fix it, and write down what you did. Most IT jobs run this way."
+      "plain": "When someone has a problem they log a request, called a ticket. You pick it up, fix it, and write down what you did. Most IT jobs run this way.",
+      "learnMore": "https://www.seek.com.au/career-advice/article/it-support-careers"
     },
     {
       "term": "Microsoft 365",
-      "plain": "The everyday work tools most Australian offices use: Outlook, Teams, OneDrive, SharePoint. If you've used them as a student you already know more than you think."
+      "plain": "The everyday work tools most Australian offices use: Outlook, Teams, OneDrive, SharePoint. If you've used them as a student you already know more than you think.",
+      "learnMore": "https://www.microsoft.com/en-au/microsoft-365"
     },
     {
       "term": "Entra ID",
-      "plain": "Microsoft's tool for controlling who can log in to what. It used to be called Azure Active Directory, so you'll see both names. You'd use it to set up accounts for new staff."
+      "plain": "Microsoft's tool for controlling who can log in to what. It used to be called Azure Active Directory, so you'll see both names. You'd use it to set up accounts for new staff.",
+      "learnMore": "https://learn.microsoft.com/en-us/entra/fundamentals/whatis"
     },
     {
       "term": "CompTIA A+ and similar certificates",
-      "plain": "Short IT qualifications you study for and sit an exam. They cost a few hundred dollars. Nine of these ten ads mentioned one, but only one actually required it, and several employers said they'd pay for yours after you start."
+      "plain": "Short IT qualifications you study for and sit an exam. They cost a few hundred dollars. Nine of these ten ads mentioned one, but only one actually required it, and several employers said they'd pay for yours after you start.",
+      "learnMore": "https://www.comptia.org/certifications/a"
     },
     {
       "term": "MSP (Managed Service Provider)",
-      "plain": "A company that runs IT for other businesses. You'd support many different clients instead of one employer. Good for learning fast."
+      "plain": "A company that runs IT for other businesses. You'd support many different clients instead of one employer. Good for learning fast.",
+      "learnMore": "https://www.seek.com.au/career-advice/article/what-is-an-msp"
     },
     {
       "term": "Superannuation (\"super\")",
-      "plain": "Retirement money your employer pays on top of your salary. When an ad says \"$70,000 + super\", the super is extra, not part of the number."
+      "plain": "Retirement money your employer pays on top of your salary. When an ad says \"$70,000 + super\", the super is extra, not part of the number.",
+      "learnMore": "https://www.ato.gov.au/individuals-and-families/super-for-individuals-and-families/super"
     },
     {
       "term": "Casual, part time, full time",
-      "plain": "Casual means no set hours and no paid leave, but a higher hourly rate. Part time and full time have set hours and paid leave. Check which one an ad is before applying."
+      "plain": "Casual means no set hours and no paid leave, but a higher hourly rate. Part time and full time have set hours and paid leave. Check which one an ad is before applying.",
+      "learnMore": "https://www.fairwork.gov.au/employee-entitlements/types-of-employees"
     },
     {
       "term": "Salary packaging",
-      "plain": "Some charities and not-for-profits can pay part of your salary before tax, so you keep more of it. One of these ads offered up to $15,900 that way. It's a real benefit worth understanding."
+      "plain": "Some charities and not-for-profits can pay part of your salary before tax, so you keep more of it. One of these ads offered up to $15,900 that way. It's a real benefit worth understanding.",
+      "learnMore": "https://www.ato.gov.au/businesses-and-organisations/super-employers-and-self-employed/fringe-benefits-tax/salary-sacrifice-arrangements"
     },
     {
       "term": "Award / Enterprise Agreement / \"Level 3\"",
-      "plain": "A fixed pay scale set for the whole organisation. If an ad mentions one, the salary is usually not negotiable. The level tells you where you'd sit on the scale."
+      "plain": "A fixed pay scale set for the whole organisation. If an ad mentions one, the salary is usually not negotiable. The level tells you where you'd sit on the scale.",
+      "learnMore": "https://www.fairwork.gov.au/employment-conditions/awards"
     },
     {
       "term": "On-call roster",
-      "plain": "You take turns being contactable outside normal hours in case something breaks. Some jobs have it, some say clearly that they don't."
+      "plain": "You take turns being contactable outside normal hours in case something breaks. Some jobs have it, some say clearly that they don't.",
+      "learnMore": "https://www.fairwork.gov.au/employee-entitlements/hours-of-work-breaks-and-rosters/hours-of-work"
     },
     {
       "term": "Hybrid",
-      "plain": "Some days in the office, some at home. Check which days are required. One of these ads asked for Monday, Tuesday and Thursday in the office."
+      "plain": "Some days in the office, some at home. Check which days are required. One of these ads asked for Monday, Tuesday and Thursday in the office.",
+      "learnMore": "https://www.seek.com.au/career-advice/article/hybrid-working"
     }
   ],
   "mustHave": [
