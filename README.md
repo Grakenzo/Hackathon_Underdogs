@@ -56,76 +56,94 @@ You'll need [Node.js](https://nodejs.org) 18 or later.
 
 ### Windows
 
-Open Command Prompt or PowerShell and run:
-
-```bash
-cd C:\Users\Grakenzo\Hackathon_Underdogs\Hackathon_Underdogs
+### Step 1 — Get the code
+ 
+Open **PowerShell** or **Command Prompt** (search for either in the Start menu).
+ 
+If you haven't cloned it yet:
+ 
+```powershell
+cd %USERPROFILE%\Documents
+git clone https://github.com/Grakenzo/Hackathon_Underdogs.git
+cd Hackathon_Underdogs
+```
+ 
+If you already have it cloned, just `cd` into that folder instead. Confirm you're in the right place:
+ 
+```powershell
+dir package.json
+```
+ 
+You should see `package.json` listed.
+ 
+### Step 2 — Install and run
+ 
+```powershell
 npm install
 npm run dev
 ```
+ 
+### Step 3 — Open in browser
+ 
+Open the URL it prints — `http://localhost:3000` by default.
+ 
+To stop the server, press `Ctrl+C` in PowerShell or Command Prompt.
+ 
+---
+ 
+## If something goes wrong
+ 
+**"npm is not found"** — Node didn't install correctly. Reinstall from [nodejs.org](https://nodejs.org), close and reopen your terminal, try again.
+ 
+**"git is not found"** — Install Git from [git-scm.com](https://git-scm.com), close and reopen your terminal, try again.
+ 
+**"Port 3000 already in use"** — Something else is using that port. Either stop that process or open `vite.config.js` and change the port number.
+ 
+**App loads but looks broken** — Run `npm install` again. A dependency may not have installed correctly.
 
-Then open the URL it prints — **http://localhost:3000** by default (see
-`vite.config.js`).
+### macOS / linux
 
-If you get:
-
-```text
-npm error ... no such file or directory, open 'package.json'
-```
-
-you ran the command outside the project folder. `cd` into the folder that
-contains this repo's `package.json` first.
-
-Check with:
-
+## Prerequisites
+ 
+Make sure you have Node.js installed (version 18 or higher). Check with:
+ 
 ```bash
-dir package.json
-```
-
-Then retry the commands above.
-
-### macOS
-
-1. Make sure you have Node.js installed (18+). Check with:
-
 node -v
-If that fails, install Node from nodejs.org or via Homebrew: brew install node.
-
-2. Get the code. If you haven't cloned it yet:
-
+```
+ 
+If that fails, install Node from [nodejs.org](https://nodejs.org) or via Homebrew:
+ 
+```bash
+brew install node
+```
+ 
+## Step 1 — Get the code
+ 
+If you haven't cloned it yet:
+ 
+```bash
 cd ~/Documents
 git clone https://github.com/Grakenzo/Hackathon_Underdogs.git
 cd Hackathon_Underdogs
-If you already have it cloned somewhere, just cd into that folder instead. Confirm you're in the right place:
-
-ls package.json
-(You should see package.json printed back.)
-
-3. Install and run:
-
-npm install
-npm run dev
-
-### Linux
-
-Open a terminal and navigate to the folder containing the project:
-
-```bash
-cd ~/Hackathon_Underdogs/Hackathon_Underdogs
-npm install
-npm run dev
 ```
-
-Then open the URL it prints.
-
-If you're unsure whether you're in the correct folder, run:
-
+ 
+If you already have it cloned somewhere, just `cd` into that folder instead. Confirm you're in the right place:
+ 
 ```bash
 ls package.json
 ```
-
-You should see:
-
-```text
-package.json
+ 
+You should see `package.json` printed back.
+ 
+## Step 2 — Install and run
+ 
+```bash
+npm install
+npm run dev
 ```
+ 
+## Step 3 — Open in browser
+ 
+Open the URL it prints — `http://localhost:3000` by default.
+ 
+To stop the server, press `Ctrl+C` in Terminal.
