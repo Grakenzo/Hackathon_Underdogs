@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TermItem from './TermItem.jsx';
 import RequirementList from './RequirementList.jsx';
 
-const TABS = ['The words', 'What you need', 'Get ready'];
+const TABS = ['Key Terms', 'Role Requirements', 'Preparation Checklist'];
 
 // Screen 4. Reads entirely from the role's data file (it-support.json for
 // now, via role.data) - nothing here is hardcoded content, only layout.

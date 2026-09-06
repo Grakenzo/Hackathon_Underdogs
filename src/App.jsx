@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { quizQuestions } from './data/quiz.js';
 import { roles } from './data/roles.js';
 import { scoreRoles } from './data/scoring.js';
+import LanguageSelector from './components/LanguageSelector.jsx';
 import StartScreen from './components/StartScreen.jsx';
 import QuizScreen from './components/QuizScreen.jsx';
 import SuggestionsScreen from './components/SuggestionsScreen.jsx';
@@ -66,6 +67,8 @@ export default function App() {
 
   return (
     <div className="app">
+      <LanguageSelector />
+
       {screen === SCREENS.START && (
         <StartScreen onStartQuiz={startQuiz} />
       )}

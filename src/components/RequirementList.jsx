@@ -13,7 +13,7 @@ export default function RequirementList({ title, items, adCount, grey }) {
           <div className="top">
             <span className="nm">{item.item}</span>
             <span className={`cnt${grey ? ' g' : ''}`}>
-              {item.count} of {adCount}
+              {item.count} of {adCount} ads
             </span>
           </div>
           <div className="nt">{item.note}</div>
