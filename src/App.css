@@ -274,6 +274,7 @@ p {
 .acch:focus-visible,
 .back:focus-visible,
 .box:focus-visible,
+.accb__link:focus-visible,
 button:focus-visible {
   outline: 3px solid rgba(21, 169, 229, 0.3);
   outline-offset: 3px;
@@ -971,6 +972,19 @@ button:focus-visible {
   padding: 0 0 17px;
   max-width: 62ch;
   animation: fade-up 0.2s var(--ease);
+}
+
+.accb__link {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.accb__link:hover {
+  text-decoration: underline;
 }
 
 /* Checklist ("Get ready" tab), wrapped in its own bordered card. */
