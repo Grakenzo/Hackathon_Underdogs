@@ -86,38 +86,25 @@ Then retry the commands above.
 
 ### macOS
 
-Open **Terminal** and navigate to the folder containing the project:
+1. Make sure you have Node.js installed (18+). Check with:
 
-```bash
-cd ~/Hackathon_Underdogs/Hackathon_Underdogs
-npm install
-npm run dev
-```
+node -v
+If that fails, install Node from nodejs.org or via Homebrew: brew install node.
 
-Then open the URL it prints — **http://localhost:3000** by default (see
-`vite.config.js`).
+2. Get the code. If you haven't cloned it yet:
 
-If you cloned the repository somewhere else, replace the path above with the
-location of your project.
+cd ~/Documents
+git clone https://github.com/Grakenzo/Hackathon_Underdogs.git
+cd Hackathon_Underdogs
+If you already have it cloned somewhere, just cd into that folder instead. Confirm you're in the right place:
 
-To check that you're in the correct folder, run:
-
-```bash
 ls package.json
-```
+(You should see package.json printed back.)
 
-If you see:
+3. Install and run:
 
-```text
-package.json
-```
-
-you're in the correct project folder. You can then run:
-
-```bash
 npm install
 npm run dev
-```
 
 ### Linux
 
