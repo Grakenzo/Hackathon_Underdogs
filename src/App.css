@@ -279,6 +279,102 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* ---------- Language selector ---------- */
+/* Sits in the top-right corner of the app card, above every screen.
+   Display only - picking a language just closes the dropdown. */
+
+.lang {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 5;
+}
+
+.lang__button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: 700 13px inherit;
+  color: var(--navy);
+  cursor: pointer;
+  transition: border-color var(--dur), background var(--dur);
+}
+
+.lang__button:hover {
+  border-color: var(--blue);
+}
+
+.lang__globe {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.lang__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 6;
+  min-width: 190px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: 0 12px 30px rgba(31, 26, 92, 0.12);
+}
+
+.lang__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-radius: var(--r-sm);
+  padding: 9px 10px;
+  font: 600 14px inherit;
+  color: var(--ink2);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur), color var(--dur);
+}
+
+.lang__option:hover {
+  background: var(--sky);
+  color: var(--navy);
+}
+
+.lang__option[aria-selected='true'] {
+  color: var(--navy);
+  font-weight: 750;
+}
+
+.lang__tick {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+/* Covers the whole app card so a click anywhere outside the dropdown
+   closes it. Sibling of .lang, not a child, so inset:0 spans .app. */
+.lang__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+@media (max-width: 480px) {
+  .lang {
+    top: 14px;
+    right: 14px;
+  }
+}
+
 /* ---------- Screen 1: Start ---------- */
 
 .hero {
