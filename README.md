@@ -56,7 +56,6 @@ You'll need [Node.js](https://nodejs.org) 18 or later.
 
 ### Windows
 
-### Step 1 — Get the code
  
 Open **PowerShell** or **Command Prompt** (search for either in the Start menu).
  
@@ -76,14 +75,10 @@ dir package.json
  
 You should see `package.json` listed.
  
-### Step 2 — Install and run
- 
 ```powershell
 npm install
 npm run dev
 ```
- 
-### Step 3 — Open in browser
  
 Open the URL it prints — `http://localhost:3000` by default.
  
@@ -102,8 +97,6 @@ To stop the server, press `Ctrl+C` in PowerShell or Command Prompt.
 **App loads but looks broken** — Run `npm install` again. A dependency may not have installed correctly.
 
 ### macOS / linux
-
-## Prerequisites
  
 Make sure you have Node.js installed (version 18 or higher). Check with:
  
